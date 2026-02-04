@@ -1,11 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Your Name</title>
+  <meta charset="UTF-8" />
+  <title>Your Name | Software Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, #020617, #020617);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(2, 6, 23, 0.9);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+      z-index: 10;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 25px;
+      border-radius: 14px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .tags {
+      margin: 15px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(56,189,248,0.1);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-right: 6px;
+    }
+
+    .details {
+      display: none;
+      margin-top: 15px;
+      color: var(--muted);
+    }
+
+    .btn {
+      margin-top: 15px;
+      background: none;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: var(--muted);
+      border-top: 1px solid #1f2933;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Hello, I’m Your Name</h1>
-  <p>Software Engineer | Full Stack | Distributed Systems</p>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header id="about">
+    <h1>Your Name</h1>
+    <p>
+      Software Engineer focused on backend systems, reliability,
+      and production-safe deployments.
+    </p>
+  </header>
+
+  <section id="projects">
+    <h2>Featured Projects</h2>
+
+    <div class="projects">
+
+      <div class="card">
+        <h3>ShadowDeploy</h3>
+        <div class="tags">
+          <span class="tag">Distributed Systems</span>
+          <span class="tag">Traffic Replay</span>
+        </div>
+        <p>Production safety platform that validates new code using real traffic.</p>
+
+        <div class="details">
+          - Shadow traffic replay against new deployments<br/>
+          - Payload diff & latency analysis<br/>
+          - AI-generated failure explanations
+        </div>
+
+        <button class="btn" onclick="toggle(this)">Details</button><br/>
+        <a class="btn" href="https://github.com/your-username/shadowdeploy" target="_blank">Repo</a>
+      </div>
+
+      <div class="card">
+        <h3>E-Commerce Platform</h3>
+        <div class="tags">
+          <span class="tag">Java</span>
+          <span class="tag">Spring Boot</span>
+        </div>
+        <p>Full-stack shopping platform with authentication and checkout.</p>
+
+        <div class="details">
+          - Secure login & registration<br/>
+          - Product catalog & cart<br/>
+          - Order management
+        </div>
+
+        <button class="btn" onclick="toggle(this)">Details</button><br/>
+        <a class="btn" href="https://github.com/your-username/ecommerce" target="_blank">Repo</a>
+      </div>
+
+      <div class="card">
+        <h3>Movie Booking System</h3>
+        <div class="tags">
+          <span class="tag">SQL</span>
+          <span class="tag">REST APIs</span>
+        </div>
+        <p>Seat booking and ticketing system with real-time availability.</p>
+
+        <div class="details">
+          - Seat selection logic<br/>
+          - Booking & cancellation flows<br/>
+          - Persistent ticket storage
+        </div>
+
+        <button class="btn" onclick="toggle(this)">Details</button><br/>
+        <a class="btn" href="https://github.com/your-username/movie-booking" target="_blank">Repo</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      GitHub: <a href="https://github.com/your-username">github.com/your-username</a><br/>
+      LinkedIn: <a href="#">linkedin.com/in/you</a>
+    </p>
+  </section>
+
+  <footer>
+    © 2026 Your Name
+  </footer>
+
+  <script>
+    function toggle(btn) {
+      const details = btn.previousElementSibling;
+      const isOpen = details.style.display === "block";
+      details.style.display = isOpen ? "none" : "block";
+      btn.textContent = isOpen ? "Details" : "Hide";
+    }
+  </script>
+
 </body>
 </html>
