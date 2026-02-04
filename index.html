@@ -7,12 +7,20 @@
 
   <style>
     :root {
-      --bg: #020617;
-      --card: #0b1220;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #38bdf8;
-      --border: #1f2937;
+      --bg-main: #0b1020;
+      --bg-grad-1: #111a33;
+      --bg-grad-2: #1a2448;
+
+      --card-bg: #141b34;
+      --card-border: #2a356b;
+
+      --text-main: #f1f5f9;
+      --text-muted: #b6c0d4;
+
+      --accent-blue: #60a5fa;
+      --accent-purple: #a78bfa;
+      --accent-teal: #2dd4bf;
+      --accent-pink: #f472b6;
     }
 
     * {
@@ -22,117 +30,162 @@
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background: radial-gradient(circle at top, var(--bg-grad-2), var(--bg-main));
+      color: var(--text-main);
       line-height: 1.65;
     }
 
     nav {
       position: sticky;
       top: 0;
-      background: rgba(2, 6, 23, 0.85);
-      backdrop-filter: blur(10px);
+      background: rgba(11, 16, 32, 0.85);
+      backdrop-filter: blur(12px);
       display: flex;
       justify-content: center;
-      gap: 32px;
+      gap: 34px;
       padding: 16px;
+      border-bottom: 1px solid #26305e;
       z-index: 10;
-      border-bottom: 1px solid var(--border);
     }
 
     nav a {
-      color: var(--muted);
+      color: var(--text-muted);
       text-decoration: none;
       font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+      transition: width 0.3s ease;
     }
 
     nav a:hover {
-      color: var(--accent);
+      color: var(--text-main);
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     header {
-      padding: 110px 20px 90px;
+      padding: 120px 20px 90px;
       text-align: center;
+      background: linear-gradient(180deg, var(--bg-grad-1), transparent);
     }
 
     header h1 {
-      font-size: 3rem;
-      margin-bottom: 12px;
+      font-size: 3.1rem;
+      margin-bottom: 14px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     header p {
-      color: var(--muted);
-      max-width: 680px;
+      max-width: 700px;
       margin: auto;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
+      color: var(--text-muted);
     }
 
     section {
-      max-width: 1100px;
+      max-width: 1150px;
       margin: auto;
       padding: 90px 20px;
     }
 
     h2 {
-      font-size: 2.2rem;
-      margin-bottom: 50px;
+      font-size: 2.3rem;
+      margin-bottom: 55px;
       text-align: center;
+      color: var(--text-main);
     }
 
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
     }
 
     .card {
-      background: linear-gradient(180deg, #0b1220, #070d1a);
-      padding: 28px;
-      border-radius: 16px;
-      border-left: 4px solid var(--accent);
+      background: linear-gradient(180deg, var(--card-bg), #0f1530);
+      padding: 30px;
+      border-radius: 18px;
+      border: 1px solid var(--card-border);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(96,165,250,0.08),
+        transparent
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
     }
 
     .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+      box-shadow: 0 35px 70px rgba(0,0,0,0.45);
     }
 
     .card h3 {
       margin-top: 0;
       margin-bottom: 10px;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
     }
 
     .card p {
-      color: var(--muted);
-      margin-bottom: 18px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
     }
 
     .tags {
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .tag {
       display: inline-block;
-      background: rgba(56,189,248,0.12);
-      color: var(--accent);
-      padding: 5px 12px;
+      padding: 6px 13px;
       border-radius: 999px;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       margin: 4px 6px 0 0;
+      color: #0b1020;
+      font-weight: 600;
     }
+
+    .tag:nth-child(4n+1) { background: var(--accent-blue); }
+    .tag:nth-child(4n+2) { background: var(--accent-purple); }
+    .tag:nth-child(4n+3) { background: var(--accent-teal); }
+    .tag:nth-child(4n+4) { background: var(--accent-pink); }
 
     .repo-link {
       display: inline-block;
       text-decoration: none;
-      color: var(--accent);
-      font-weight: 500;
-      border-bottom: 1px solid transparent;
+      font-weight: 600;
+      color: var(--accent-blue);
     }
 
     .repo-link:hover {
-      border-bottom-color: var(--accent);
+      color: var(--accent-purple);
     }
 
     #contact {
@@ -140,15 +193,16 @@
     }
 
     #contact a {
-      color: var(--accent);
+      color: var(--accent-teal);
       text-decoration: none;
+      font-weight: 500;
     }
 
     footer {
       text-align: center;
-      padding: 50px 20px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
+      padding: 55px 20px;
+      color: var(--text-muted);
+      border-top: 1px solid #26305e;
     }
   </style>
 </head>
